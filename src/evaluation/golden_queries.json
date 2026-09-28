@@ -1,0 +1,162 @@
+{
+  "queries": [
+    {
+      "id": "q01",
+      "question": "How did foreign currency fluctuations affect Apple's net sales in 2023?",
+      "category": "narrative",
+      "relevant_chunks": ["apple_2023_10k.htm_p30_c0"]
+    },
+    {
+      "id": "q02",
+      "question": "How much did Apple spend on research and development in 2023?",
+      "category": "numeric",
+      "relevant_chunks": ["apple_2023_10k.htm_p31_c5"]
+    },
+    {
+      "id": "q03",
+      "question": "What was Apple's total net sales in 2023?",
+      "category": "numeric",
+      "relevant_chunks": [
+        "apple_2023_10k.htm_p47_c2",
+        "apple_2023_10k.htm_p38_c3",
+        "apple_2023_10k.htm_p30_c3"
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "What was Apple's total operating income in 2023?",
+      "category": "numeric",
+      "relevant_chunks": ["apple_2023_10k.htm_p47_c1"]
+    },
+    {
+      "id": "q05",
+      "question": "What was Apple's revenue from the Americas segment in 2023?",
+      "category": "segment",
+      "relevant_chunks": ["apple_2023_10k.htm_p30_c3"]
+    },
+    {
+      "id": "q06",
+      "question": "What was Apple's revenue from the Greater China segment in 2023?",
+      "category": "segment",
+      "relevant_chunks": ["apple_2023_10k.htm_p30_c3"]
+    },
+    {
+      "id": "q07",
+      "question": "Why did Apple's iPhone net sales decrease in 2023?",
+      "category": "narrative",
+      "relevant_chunks": ["apple_2023_10k.htm_p31_c1"]
+    },
+    {
+      "id": "q08",
+      "question": "What were Apple's main risk factors related to foreign exchange?",
+      "category": "narrative",
+      "relevant_chunks": [
+        "apple_2023_10k.htm_p33_c4",
+        "apple_2023_10k.htm_p33_c7"
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "What was Microsoft's research and development expense in 2023?",
+      "category": "numeric",
+      "relevant_chunks": ["microsoft_2023_10k.htm_p54_c1"]
+    },
+    {
+      "id": "q10",
+      "question": "What was Alphabet's research and development expense in 2023?",
+      "category": "numeric",
+      "relevant_chunks": ["alphabet_2023_10k.htm_p49_c4"]
+    },
+    {
+      "id": "q11",
+      "question": "What was Tesla's net income in 2023?",
+      "category": "negative",
+      "relevant_chunks": []
+    },
+    {
+      "id": "q12",
+      "question": "What did Apple's CEO say about AI strategy in 2023?",
+      "category": "negative",
+      "relevant_chunks": []
+    },
+    {
+      "id": "q13",
+      "question": "What was Microsoft's total revenue in fiscal 2023?",
+      "category": "numeric",
+      "relevant_chunks": [
+        "microsoft_2023_10k.htm_p86_c0",
+        "microsoft_2023_10k.htm_p86_c1"
+      ]
+    },
+    {
+      "id": "q14",
+      "question": "What was Alphabet's total revenue in 2023?",
+      "category": "numeric",
+      "relevant_chunks": [
+        "alphabet_2023_10k.htm_p46_c1",
+        "alphabet_2023_10k.htm_p88_c5"
+      ]
+    },
+    {
+      "id": "q15",
+      "question": "What was Apple's net income in 2023?",
+      "category": "numeric",
+      "relevant_chunks": ["apple_2023_10k.htm_p34_c5"]
+    },
+    {
+      "id": "q16",
+      "question": "What drove Apple's Services revenue growth in 2023?",
+      "category": "narrative",
+      "relevant_chunks": ["apple_2023_10k.htm_p31_c2"]
+    },
+    {
+      "id": "q17",
+      "question": "What are Microsoft's main risk factors related to cloud competition?",
+      "category": "narrative",
+      "relevant_chunks": [
+        "microsoft_2023_10k.htm_p49_c1",
+        "microsoft_2023_10k.htm_p31_c6",
+        "microsoft_2023_10k.htm_p31_c7"
+      ]
+    },
+    {
+      "id": "q18",
+      "question": "What was Apple's iPhone net sales in 2023?",
+      "category": "segment",
+      "relevant_chunks": ["apple_2023_10k.htm_p38_c3"]
+    },
+    {
+      "id": "q19",
+      "question": "What was Microsoft's revenue from the Intelligent Cloud segment in 2023?",
+      "category": "segment",
+      "relevant_chunks": [
+        "microsoft_2023_10k.htm_p85_c5",
+        "microsoft_2023_10k.htm_p52_c7"
+      ]
+    },
+    {
+      "id": "q20",
+      "question": "Compare Apple's and Microsoft's research and development spending in 2023.",
+      "category": "comparative",
+      "relevant_chunks": [
+        "apple_2023_10k.htm_p31_c5",
+        "microsoft_2023_10k.htm_p54_c1"
+      ]
+    },
+    {
+      "id": "q21",
+      "question": "Which company had higher total revenue in 2023: Apple or Microsoft?",
+      "category": "comparative",
+      "relevant_chunks": [
+        "apple_2023_10k.htm_p47_c2",
+        "microsoft_2023_10k.htm_p86_c0"
+      ]
+    },
+    {
+      "id": "q22",
+      "question": "What was Amazon's net income in 2023?",
+      "category": "negative",
+      "relevant_chunks": []
+    }
+  ]
+}

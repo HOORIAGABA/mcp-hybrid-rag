@@ -1,0 +1,326 @@
+{
+  "timestamp": "2026-09-28T22:26:11.687935",
+  "k": 5,
+  "vector_only": {
+    "per_query": [
+      {
+        "id": "q01",
+        "query": "How did foreign currency fluctuations affect Apple's ne",
+        "category": "narrative",
+        "p@k": 0.0,
+        "r@k": 0.0,
+        "mrr": 0.0
+      },
+      {
+        "id": "q02",
+        "query": "How much did Apple spend on research and development in",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 0.5
+      },
+      {
+        "id": "q03",
+        "query": "What was Apple's total net sales in 2023?",
+        "category": "numeric",
+        "p@k": 0.6,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q04",
+        "query": "What was Apple's total operating income in 2023?",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q05",
+        "query": "What was Apple's revenue from the Americas segment in 2",
+        "category": "segment",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q06",
+        "query": "What was Apple's revenue from the Greater China segment",
+        "category": "segment",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q07",
+        "query": "Why did Apple's iPhone net sales decrease in 2023?",
+        "category": "narrative",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      {
+        "id": "q08",
+        "query": "What were Apple's main risk factors related to foreign ",
+        "category": "narrative",
+        "p@k": 0.2,
+        "r@k": 0.5,
+        "mrr": 0.5
+      },
+      {
+        "id": "q09",
+        "query": "What was Microsoft's research and development expense i",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q10",
+        "query": "What was Alphabet's research and development expense in",
+        "category": "numeric",
+        "p@k": 0.0,
+        "r@k": 0.0,
+        "mrr": 0.0
+      },
+      {
+        "id": "q13",
+        "query": "What was Microsoft's total revenue in fiscal 2023?",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 0.5,
+        "mrr": 0.5
+      },
+      {
+        "id": "q14",
+        "query": "What was Alphabet's total revenue in 2023?",
+        "category": "numeric",
+        "p@k": 0.4,
+        "r@k": 1.0,
+        "mrr": 0.5
+      },
+      {
+        "id": "q15",
+        "query": "What was Apple's net income in 2023?",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 0.2
+      },
+      {
+        "id": "q16",
+        "query": "What drove Apple's Services revenue growth in 2023?",
+        "category": "narrative",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      {
+        "id": "q17",
+        "query": "What are Microsoft's main risk factors related to cloud",
+        "category": "narrative",
+        "p@k": 0.4,
+        "r@k": 0.6666666666666666,
+        "mrr": 1.0
+      },
+      {
+        "id": "q18",
+        "query": "What was Apple's iPhone net sales in 2023?",
+        "category": "segment",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q19",
+        "query": "What was Microsoft's revenue from the Intelligent Cloud",
+        "category": "segment",
+        "p@k": 0.4,
+        "r@k": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      {
+        "id": "q20",
+        "query": "Compare Apple's and Microsoft's research and developmen",
+        "category": "comparative",
+        "p@k": 0.4,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q21",
+        "query": "Which company had higher total revenue in 2023: Apple o",
+        "category": "comparative",
+        "p@k": 0.0,
+        "r@k": 0.0,
+        "mrr": 0.0
+      }
+    ],
+    "aggregate": {
+      "precision": 0.23157894736842108,
+      "recall": 0.7719298245614035,
+      "mrr": 0.5894736842105264
+    }
+  },
+  "hybrid_rerank": {
+    "per_query": [
+      {
+        "id": "q01",
+        "query": "How did foreign currency fluctuations affect Apple's ne",
+        "category": "narrative",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q02",
+        "query": "How much did Apple spend on research and development in",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q03",
+        "query": "What was Apple's total net sales in 2023?",
+        "category": "numeric",
+        "p@k": 0.6,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q04",
+        "query": "What was Apple's total operating income in 2023?",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q05",
+        "query": "What was Apple's revenue from the Americas segment in 2",
+        "category": "segment",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q06",
+        "query": "What was Apple's revenue from the Greater China segment",
+        "category": "segment",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q07",
+        "query": "Why did Apple's iPhone net sales decrease in 2023?",
+        "category": "narrative",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q08",
+        "query": "What were Apple's main risk factors related to foreign ",
+        "category": "narrative",
+        "p@k": 0.4,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q09",
+        "query": "What was Microsoft's research and development expense i",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 0.5
+      },
+      {
+        "id": "q10",
+        "query": "What was Alphabet's research and development expense in",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      {
+        "id": "q13",
+        "query": "What was Microsoft's total revenue in fiscal 2023?",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 0.5,
+        "mrr": 0.5
+      },
+      {
+        "id": "q14",
+        "query": "What was Alphabet's total revenue in 2023?",
+        "category": "numeric",
+        "p@k": 0.4,
+        "r@k": 1.0,
+        "mrr": 0.5
+      },
+      {
+        "id": "q15",
+        "query": "What was Apple's net income in 2023?",
+        "category": "numeric",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q16",
+        "query": "What drove Apple's Services revenue growth in 2023?",
+        "category": "narrative",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q17",
+        "query": "What are Microsoft's main risk factors related to cloud",
+        "category": "narrative",
+        "p@k": 0.4,
+        "r@k": 0.6666666666666666,
+        "mrr": 1.0
+      },
+      {
+        "id": "q18",
+        "query": "What was Apple's iPhone net sales in 2023?",
+        "category": "segment",
+        "p@k": 0.2,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q19",
+        "query": "What was Microsoft's revenue from the Intelligent Cloud",
+        "category": "segment",
+        "p@k": 0.4,
+        "r@k": 1.0,
+        "mrr": 0.5
+      },
+      {
+        "id": "q20",
+        "query": "Compare Apple's and Microsoft's research and developmen",
+        "category": "comparative",
+        "p@k": 0.4,
+        "r@k": 1.0,
+        "mrr": 1.0
+      },
+      {
+        "id": "q21",
+        "query": "Which company had higher total revenue in 2023: Apple o",
+        "category": "comparative",
+        "p@k": 0.2,
+        "r@k": 0.5,
+        "mrr": 0.5
+      }
+    ],
+    "aggregate": {
+      "precision": 0.2736842105263159,
+      "recall": 0.9298245614035087,
+      "mrr": 0.8333333333333334
+    }
+  }
+}

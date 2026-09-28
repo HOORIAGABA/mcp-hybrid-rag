@@ -1,0 +1,10 @@
+﻿__pycache__/
+*.pyc
+.env
+index/
+data/raw/
+data/processed/
+frontend/node_modules/
+frontend/.next/
+.venv/
+
