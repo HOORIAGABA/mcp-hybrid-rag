@@ -1,6 +1,8 @@
 """ChromaDB vector index using local BGE embeddings (no OpenAI)."""
+
 import chromadb
 from sentence_transformers import SentenceTransformer
+
 from src.config import CHROMA_DIR, EMBEDDING_MODEL
 
 # Loaded lazily on first use — downloads ~80MB once, then cached
@@ -48,15 +50,17 @@ def vector_search(query: str, top_k: int = 20) -> list[dict]:
     q_emb = _embed([query])[0]
     res = coll.query(query_embeddings=[q_emb], n_results=top_k)
     out = []
-    for rank, (doc, meta, dist) in enumerate(zip(
-        res["documents"][0], res["metadatas"][0], res["distances"][0]
-    )):
-        out.append({
-            "id": res["ids"][0][rank],
-            "content": doc,
-            "source": meta["source"],
-            "page": meta["page"],
-            "vector_score": 1 - dist,
-            "vector_rank": rank + 1,
-        })
+    for rank, (doc, meta, dist) in enumerate(
+        zip(res["documents"][0], res["metadatas"][0], res["distances"][0])
+    ):
+        out.append(
+            {
+                "id": res["ids"][0][rank],
+                "content": doc,
+                "source": meta["source"],
+                "page": meta["page"],
+                "vector_score": 1 - dist,
+                "vector_rank": rank + 1,
+            }
+        )
     return out

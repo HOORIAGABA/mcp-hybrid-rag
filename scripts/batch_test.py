@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.retrieval.hybrid_retriever import retrieve
@@ -30,7 +31,7 @@ QUERIES = [
 ]
 
 for q in QUERIES:
-    print(f"\n{'='*80}\nQUERY: {q}\n{'='*80}")
+    print(f"\n{'=' * 80}\nQUERY: {q}\n{'=' * 80}")
     results = retrieve(q, top_k=3)
     for i, r in enumerate(results, 1):
         print(f"[{i}] {r['id']}  rerank={r.get('rerank_score', 0):.3f}")

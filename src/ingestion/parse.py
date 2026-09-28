@@ -1,6 +1,9 @@
 """Parse HTML filings into per-page (per-section) text."""
+
 from pathlib import Path
+
 from bs4 import BeautifulSoup
+
 from src.config import DATA_RAW
 
 
@@ -25,11 +28,13 @@ def parse_html(html_path: Path) -> list[dict]:
     pages = []
     page_size = 4000
     for i in range(0, len(cleaned), page_size):
-        pages.append({
-            "source": html_path.name,
-            "page": i // page_size + 1,
-            "text": cleaned[i : i + page_size],
-        })
+        pages.append(
+            {
+                "source": html_path.name,
+                "page": i // page_size + 1,
+                "text": cleaned[i : i + page_size],
+            }
+        )
     return pages
 
 

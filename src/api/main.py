@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
 from src.retrieval.hybrid_retriever import retrieve, vector_only_retrieve
 
 app = FastAPI(title="Hybrid RAG API")

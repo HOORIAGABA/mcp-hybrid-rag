@@ -1,9 +1,10 @@
 """Main entrypoint: hybrid retrieval + reranking."""
+
+from src.config import TOP_K_FINAL, TOP_K_RETRIEVE
 from src.retrieval.bm25_index import bm25_search
-from src.retrieval.vector_index import vector_search
 from src.retrieval.fusion import reciprocal_rank_fusion
 from src.retrieval.reranker import rerank
-from src.config import TOP_K_RETRIEVE, TOP_K_FINAL
+from src.retrieval.vector_index import vector_search
 
 
 def retrieve(query: str, top_k: int = TOP_K_FINAL) -> list[dict]:

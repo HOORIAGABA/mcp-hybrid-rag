@@ -1,10 +1,9 @@
 """Reciprocal Rank Fusion."""
+
 from src.config import RRF_K
 
 
-def reciprocal_rank_fusion(
-    bm25_results: list[dict], vector_results: list[dict]
-) -> list[dict]:
+def reciprocal_rank_fusion(bm25_results: list[dict], vector_results: list[dict]) -> list[dict]:
     scores = {}
     payload = {}
 

@@ -3,9 +3,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from src.ingestion.chunk import chunk_documents
 from src.ingestion.download import download_dataset
 from src.ingestion.parse import parse_all
-from src.ingestion.chunk import chunk_documents
 from src.retrieval.bm25_index import build_bm25
 from src.retrieval.vector_index import build_vector_index
 

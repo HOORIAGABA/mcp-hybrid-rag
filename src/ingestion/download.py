@@ -3,11 +3,13 @@
 SEC EDGAR requires a User-Agent header with your name and email.
 Edit the USER_AGENT constant below before running.
 """
-import urllib.request
+
 import time
-from pathlib import Path
-from src.config import DATA_RAW
+import urllib.request
+
 from tqdm import tqdm
+
+from src.config import DATA_RAW
 
 # REQUIRED: SEC EDGAR requires identifying yourself. Use real values.
 USER_AGENT = "Hooria hooriagava129@gmail.com"
@@ -16,17 +18,25 @@ USER_AGENT = "Hooria hooriagava129@gmail.com"
 # Adding a few companies gives you a more interesting corpus.
 FILINGS = [
     # Apple 2023 10-K
-    ("apple_2023_10k.htm",
-     "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm"),
+    (
+        "apple_2023_10k.htm",
+        "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+    ),
     # Microsoft 2023 10-K
-    ("microsoft_2023_10k.htm",
-     "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm"),
+    (
+        "microsoft_2023_10k.htm",
+        "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm",
+    ),
     # IBM 2023 10-K
-    ("ibm_2023_10k.htm",
-     "https://www.sec.gov/Archives/edgar/data/51143/000155837024002463/ibm-20231231.htm"),
+    (
+        "ibm_2023_10k.htm",
+        "https://www.sec.gov/Archives/edgar/data/51143/000155837024002463/ibm-20231231.htm",
+    ),
     # Alphabet 2023 10-K
-    ("alphabet_2023_10k.htm",
-     "https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm"),
+    (
+        "alphabet_2023_10k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm",
+    ),
 ]
 
 

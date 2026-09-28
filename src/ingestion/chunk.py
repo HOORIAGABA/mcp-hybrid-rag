@@ -1,6 +1,8 @@
 """Chunk parsed filing text into retrievable pieces with metadata preserved."""
+
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from src.config import CHUNK_SIZE, CHUNK_OVERLAP
+
+from src.config import CHUNK_OVERLAP, CHUNK_SIZE
 
 
 def chunk_documents(pages: list[dict]) -> list[dict]:
@@ -12,10 +14,12 @@ def chunk_documents(pages: list[dict]) -> list[dict]:
     chunks = []
     for page in pages:
         for i, chunk_text in enumerate(splitter.split_text(page["text"])):
-            chunks.append({
-                "id": f"{page['source']}_p{page['page']}_c{i}",
-                "content": chunk_text,
-                "source": page["source"],
-                "page": page["page"],
-            })
+            chunks.append(
+                {
+                    "id": f"{page['source']}_p{page['page']}_c{i}",
+                    "content": chunk_text,
+                    "source": page["source"],
+                    "page": page["page"],
+                }
+            )
     return chunks

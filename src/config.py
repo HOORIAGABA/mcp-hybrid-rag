@@ -1,11 +1,12 @@
 import os
-from pathlib import Path
-from dotenv import load_dotenv
 import warnings
+from pathlib import Path
+
 from bs4 import XMLParsedAsHTMLWarning
+from dotenv import load_dotenv
+
 load_dotenv()
 
-import os
 
 
 os.environ["ANONYMIZED_TELEMETRY"] = "False"
@@ -26,8 +27,8 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 150
-TOP_K_RETRIEVE = 20   # per retriever before fusion
-TOP_K_FINAL = 5       # after rerank
+TOP_K_RETRIEVE = 20  # per retriever before fusion
+TOP_K_FINAL = 5  # after rerank
 RRF_K = 60
 
 for p in [DATA_RAW, DATA_PROCESSED, CHROMA_DIR, BM25_DIR]:

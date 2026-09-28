@@ -1,8 +1,10 @@
 """BM25 index with pickle persistence."""
+
 import pickle
 import re
-from pathlib import Path
+
 from rank_bm25 import BM25Okapi
+
 from src.config import BM25_DIR
 
 

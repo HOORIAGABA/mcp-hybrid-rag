@@ -3,8 +3,11 @@
 Uses a background THREAD (not asyncio task) for model loading.
 FastMCP's mcp.run() manages the event loop itself.
 """
+
 import threading
+
 from mcp.server.fastmcp import FastMCP
+
 from src.retrieval.hybrid_retriever import retrieve
 
 mcp = FastMCP("hybrid-rag")
@@ -19,10 +22,13 @@ def _load_models_sync():
     print("Loading models in background...", flush=True)
 
     from src.retrieval.reranker import get_model as get_reranker
+
     get_reranker()
     print("Reranker loaded.", flush=True)
 
-    from src.retrieval.vector_index import get_model as get_embedder, _embed
+    from src.retrieval.vector_index import _embed
+    from src.retrieval.vector_index import get_model as get_embedder
+
     get_embedder()
     _embed(["warmup"])
     print("Embedder loaded.", flush=True)
@@ -39,6 +45,7 @@ async def search_financial_docs(query: str, top_k: int = 5) -> str:
         print("Tool called — waiting for models...", flush=True)
         while not _models_ready:
             import time
+
             time.sleep(1)
 
     results = retrieve(query, top_k=top_k)

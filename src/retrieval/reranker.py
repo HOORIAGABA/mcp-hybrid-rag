@@ -1,5 +1,7 @@
 """BGE cross-encoder reranker."""
+
 from sentence_transformers import CrossEncoder
+
 from src.config import RERANKER_MODEL
 
 _model = None

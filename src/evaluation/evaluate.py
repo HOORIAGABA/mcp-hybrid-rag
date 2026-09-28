@@ -1,7 +1,9 @@
 """Evaluate retrieval quality: Precision@K, Recall@K, MRR."""
+
 import json
 from datetime import datetime
 from pathlib import Path
+
 from src.retrieval.hybrid_retriever import retrieve, vector_only_retrieve
 
 GOLDEN_PATH = Path(__file__).parent / "golden_queries.json"
@@ -47,14 +49,16 @@ def evaluate_mode(mode, queries):
         retrieved_ids = [c["id"] for c in chunks]
         relevant_ids = set(q["relevant_chunks"])
 
-        results.append({
-            "id": q["id"],
-            "query": q["question"][:55],
-            "category": q.get("category", "unknown"),
-            "p@k": precision_at_k(retrieved_ids, relevant_ids, K),
-            "r@k": recall_at_k(retrieved_ids, relevant_ids, K),
-            "mrr": mrr(retrieved_ids, relevant_ids),
-        })
+        results.append(
+            {
+                "id": q["id"],
+                "query": q["question"][:55],
+                "category": q.get("category", "unknown"),
+                "p@k": precision_at_k(retrieved_ids, relevant_ids, K),
+                "r@k": recall_at_k(retrieved_ids, relevant_ids, K),
+                "mrr": mrr(retrieved_ids, relevant_ids),
+            }
+        )
     return results
 
 

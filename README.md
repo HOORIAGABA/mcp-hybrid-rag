@@ -2,6 +2,8 @@
 
 A hybrid retrieval system over SEC 10-K filings that combines **BM25 keyword search**, **dense vector search**, **Reciprocal Rank Fusion**, and **cross-encoder reranking** — exposed as a FastAPI endpoint, an MCP tool, and a Next.js frontend.
 
+[![CI](https://github.com/HOORIAGABA/mcp-hybrid-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/HOORIAGABA/mcp-hybrid-rag/actions/workflows/ci.yml)
+
 ![Demo](docs/demo.gif)
 
 ## What This Does
