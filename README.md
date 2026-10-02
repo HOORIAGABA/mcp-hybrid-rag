@@ -4,6 +4,8 @@ A hybrid retrieval system over SEC 10-K filings that combines **BM25 keyword sea
 
 [![CI](https://github.com/HOORIAGABA/mcp-hybrid-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/HOORIAGABA/mcp-hybrid-rag/actions/workflows/ci.yml)
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/hooriagaba/mcp-hybrid-rag)](https://m8ven.ai/mcp/hooriagaba/mcp-hybrid-rag?s=readme)
+
 ![Demo](docs/demo.gif)
 
 ## What This Does
