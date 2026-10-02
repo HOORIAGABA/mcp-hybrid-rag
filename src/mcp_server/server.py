@@ -5,6 +5,9 @@ FastMCP's mcp.run() manages the event loop itself.
 """
 
 import threading
+import time
+
+from mcp.types import ToolAnnotations
 
 from mcp.server.fastmcp import FastMCP
 
@@ -37,15 +40,20 @@ def _load_models_sync():
     print("Models ready.", flush=True)
 
 
-@mcp.tool()
+@mcp.tool(
+    annotations=ToolAnnotations(
+        readOnlyHint=True,
+        destructiveHint=False,
+        idempotentHint=True,
+        openWorldHint=False,
+    )
+)
 async def search_financial_docs(query: str, top_k: int = 5) -> str:
     """Search financial reports using hybrid retrieval (BM25 + vector) with reranking."""
     # Wait for models if not ready yet
     if not _models_ready:
         print("Tool called — waiting for models...", flush=True)
         while not _models_ready:
-            import time
-
             time.sleep(1)
 
     results = retrieve(query, top_k=top_k)
