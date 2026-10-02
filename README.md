@@ -276,4 +276,4 @@ Total: ~1,700 chunks after recursive character splitting (800-char chunks, 150-c
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).
