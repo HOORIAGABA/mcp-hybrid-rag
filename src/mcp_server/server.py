@@ -7,9 +7,8 @@ FastMCP's mcp.run() manages the event loop itself.
 import threading
 import time
 
-from mcp.types import ToolAnnotations
-
 from mcp.server.fastmcp import FastMCP
+from mcp.types import ToolAnnotations
 
 from src.retrieval.hybrid_retriever import retrieve
 
