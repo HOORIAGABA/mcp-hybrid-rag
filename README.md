@@ -172,6 +172,14 @@ Full per-query output: [`results/evaluation_2026-09-28.txt`](results/evaluation_
 
 ## MCP Integration
 
+> **Two transports are supported.** The server runs over **stdio** by default
+> (for the MCP Inspector and Claude Desktop). Pass `--http` to run it as a
+> standalone Streamable HTTP server on port 8765, which is what the
+> [Hybrid Research Agent](https://github.com/HOORIAGABA/hybrid-research-agent)
+> uses. HTTP transport is recommended for production because it decouples
+> server lifecycle from client lifecycle, and it avoids a Windows subprocess
+> pipe deadlock that occurs during PyTorch model loading.
+
 The same retrieval engine is exposed as an MCP (Model Context Protocol) tool. Any MCP-compatible AI client — Claude Desktop, Cursor, the MCP Inspector — can discover the tool and invoke it with a natural language query.
 
 **Tool discovery** — the MCP client reads the tool schema from Python type hints and docstring:
@@ -262,13 +270,45 @@ npm run dev
 
 Open `http://localhost:3000` and try the toggle.
 
-### Test the MCP Server
+### Test the MCP Server (stdio — for MCP Inspector)
 
 ```bash
 npx @modelcontextprotocol/inspector "E:\path\to\.venv\Scripts\python.exe" -m src.mcp_server.server
 ```
 
 Then in the browser: **Connect → Tools → `search_financial_docs` → Run Tool**.
+
+**Note:** The server takes 60–120 seconds to load models on first run. If the
+Inspector's default 30-second timeout expires before the handshake completes,
+increase the timeout by appending this to the Inspector's URL:
+
+```
+&MCP_SERVER_REQUEST_TIMEOUT=300000
+```
+
+The full URL will look like:
+
+```
+http://127.0.0.1:6274/?MCP_INSPECTOR_API_TOKEN=...&MCP_SERVER_REQUEST_TIMEOUT=300000
+```
+
+Then click **Connect** again. The first `initialize` request will now wait up
+to 5 minutes for the model load to finish.
+
+### Run as HTTP Server (for agent clients)
+
+For clients that prefer HTTP transport — or when stdio subprocess pipes
+deadlock on Windows during model loading — run the server in HTTP mode:
+
+```bash
+python -m src.mcp_server.server --http
+```
+
+This starts the server at `http://127.0.0.1:8765/mcp` using Streamable HTTP
+transport. Any MCP client that supports HTTP transport can connect.
+
+The default mode (no flag) still uses stdio for the MCP Inspector and
+Claude Desktop integration.
 
 ## Deployment Notes
 

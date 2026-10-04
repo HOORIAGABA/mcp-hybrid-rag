@@ -3,16 +3,25 @@
 Uses a background THREAD (not asyncio task) for model loading.
 FastMCP's mcp.run() manages the event loop itself.
 """
+# --- Set environment variables BEFORE importing torch/transformers/sentence-transformers ---
+import os
 
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
+os.environ.setdefault("TQDM_DISABLE", "1")
+
+# --- Now the heavy imports ---
 import threading
 import time
 
-from mcp.server.fastmcp import FastMCP
 from mcp.types import ToolAnnotations
+from mcp.server.fastmcp import FastMCP
 
 from src.retrieval.hybrid_retriever import retrieve
 
-mcp = FastMCP("hybrid-rag")
+mcp = FastMCP("hybrid-rag", host="127.0.0.1", port=8765)
 
 # Global flag: are models loaded yet?
 _models_ready = False
@@ -68,8 +77,13 @@ async def search_financial_docs(query: str, top_k: int = 5) -> str:
 
 
 if __name__ == "__main__":
-    # Start model loading in a background THREAD (not asyncio task)
+    import sys
+
     threading.Thread(target=_load_models_sync, daemon=True).start()
-    # mcp.run() starts its own event loop — this is correct
-    print("Starting MCP server (models loading in background)...", flush=True)
-    mcp.run()
+
+    if "--http" in sys.argv:
+        print("Starting MCP server on http://127.0.0.1:8765/mcp", flush=True)
+        mcp.run(transport="streamable-http")
+    else:
+        print("Starting MCP server (models loading in background)...", flush=True)
+        mcp.run()
