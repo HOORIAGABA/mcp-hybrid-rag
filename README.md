@@ -16,46 +16,57 @@ The frontend toggle compares **vector-only** retrieval against **hybrid + rerank
 
 ## Architecture
 
+```mermaid
+
+flowchart TB
+    subgraph Ingestion["Ingestion (run once)"]
+        A1[SEC 10-K filings<br/>Apple · Microsoft · Alphabet]
+        A2[Parse + chunk<br/>800 chars · 150 overlap]
+        A1 --> A2
+    end
+
+    subgraph Indexing["Indexing"]
+        B1[BM25 index<br/>sparse · keyword]
+        B2[BGE-small-en-v1.5<br/>dense · 384-dim]
+        A2 --> B1
+        A2 --> B2
+    end
+
+    subgraph Query["Query-time retrieval"]
+        Q[User query]
+        Q --> BM[BM25 top-20]
+        Q --> VC[Vector top-20<br/>cosine similarity]
+        B1 -.-> BM
+        B2 -.-> VC
+        BM --> RRF[Reciprocal Rank Fusion<br/>k=60]
+        VC --> RRF
+        RRF --> RR[BGE-reranker-v2-m3<br/>cross-encoder]
+        RR --> T5[Top-5 chunks<br/>with page citations]
+    end
+
+    subgraph Serving["Serving"]
+        T5 --> API[FastAPI<br/>GET /search]
+        T5 --> MCP[MCP server<br/>search_financial_docs]
+        API --> FE[Next.js frontend<br/>Vector-only vs Hybrid toggle]
+        MCP --> AG[Any MCP client<br/>Claude Desktop · Cursor]
+    end
+
+    classDef store fill:#1e3a8a,stroke:#60a5fa,color:#fff
+    classDef proc fill:#1e293b,stroke:#94a3b8,color:#fff
+    classDef serve fill:#064e3b,stroke:#34d399,color:#fff
+
+    class B1,B2 store
+    class BM,VC,RRF,RR,T5 proc
+    class API,MCP,FE,AG serve
 ```
-                          ┌─────────────────────────────┐
-                          │  Ingestion (run once)       │
-                          │  SEC EDGAR → parse → chunk  │
-                          └──────────────┬──────────────┘
-                                         │
-                          ┌──────────────┴──────────────┐
-                          ▼                             ▼
-                   ┌─────────────┐              ┌──────────────┐
-                   │ BM25 index  │              │ Vector index │
-                   │ (sparse)    │              │ (ChromaDB)   │
-                   └──────┬──────┘              └──────┬───────┘
-                          │                             │
-              query ──────┼─────────────────────────────┼────── query
-                          ▼                             ▼
-                    top-20 by BM25              top-20 by cosine
-                          │                             │
-                          └──────────┬──────────────────┘
-                                     ▼
-                          ┌────────────────────┐
-                          │  RRF Fusion (k=60) │
-                          └─────────┬──────────┘
-                                    ▼
-                          ┌────────────────────┐
-                          │  BGE Cross-Encoder │
-                          │  Reranker (top-5)  │
-                          └─────────┬──────────┘
-                                    ▼
-                     ┌──────────────┴──────────────┐
-                     ▼                             ▼
-              FastAPI /search              MCP tool: search_financial_docs
-                     │                             │
-                     ▼                             ▼
-              Next.js frontend              Any MCP-compatible AI client
-```
+
 See [`docs/architecture.md`](docs/architecture.md) for a deeper dive into the module structure and design decisions.
 
 ## Why Hybrid?
 
 BM25 nails exact terms (`ROIC`, `$383,285`, `fiscal 2023`) but misses paraphrases. Dense embeddings understand meaning but blur specific numbers and entity names. Fusing them with Reciprocal Rank Fusion combines both strengths; a cross-encoder reranker does the final precision cut.
+
+For the full metrics — precision, recall, MRR — see [Retrieval Evaluation](#retrieval-evaluation).
 
 ### Retrieval Quality Comparison
 
