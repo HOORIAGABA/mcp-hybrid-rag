@@ -161,6 +161,8 @@ absent. Entity-level filtering would fix this.
 
 ### Reproducing
 
+![Evaluation output](docs/evaluation_output.png)
+
 ```bash
 python -m src.evaluation.evaluate
 ```
