@@ -16,8 +16,8 @@ os.environ.setdefault("TQDM_DISABLE", "1")
 import threading
 import time
 
-from mcp.types import ToolAnnotations
 from mcp.server.fastmcp import FastMCP
+from mcp.types import ToolAnnotations
 
 from src.retrieval.hybrid_retriever import retrieve
 
