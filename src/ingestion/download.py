@@ -8,8 +8,7 @@ import urllib.request
 
 from tqdm import tqdm
 
-from src.config import DATA_RAW
-from src.config import SEC_USER_AGENT
+from src.config import DATA_RAW, SEC_USER_AGENT
 
 # REQUIRED: SEC EDGAR requires identifying yourself. Use real values.
 USER_AGENT = SEC_USER_AGENT

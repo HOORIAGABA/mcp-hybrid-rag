@@ -3,7 +3,6 @@
 from pathlib import Path
 
 from bs4 import BeautifulSoup
-from chromadb import config
 
 from src.config import DATA_RAW, PAGE_SIZE
 
