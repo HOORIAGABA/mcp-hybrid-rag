@@ -203,7 +203,7 @@ The same retrieval engine is exposed as an MCP (Model Context Protocol) tool. An
 
 | Layer | Technology |
 |---|---|
-| **Parsing** | `pypdf`, `beautifulsoup4` |
+| **Parsing** | `beautifulsoup4` |
 | **Chunking** | `langchain-text-splitters` (RecursiveCharacterTextSplitter only) |
 | **Sparse retrieval** | `rank_bm25` (BM25Okapi) |
 | **Dense retrieval** | `BAAI/bge-small-en-v1.5`, ChromaDB |

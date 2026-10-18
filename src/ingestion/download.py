@@ -1,7 +1,6 @@
 """Download 10-K filings from SEC EDGAR.
 
 SEC EDGAR requires a User-Agent header with your name and email.
-Edit the USER_AGENT constant below before running.
 """
 
 import time
@@ -10,9 +9,10 @@ import urllib.request
 from tqdm import tqdm
 
 from src.config import DATA_RAW
+from src.config import SEC_USER_AGENT
 
 # REQUIRED: SEC EDGAR requires identifying yourself. Use real values.
-USER_AGENT = "Hooria hooriagava129@gmail.com"
+USER_AGENT = SEC_USER_AGENT
 
 # Real SEC EDGAR 10-K URLs. These are the raw filing documents.
 # Adding a few companies gives you a more interesting corpus.
@@ -26,11 +26,6 @@ FILINGS = [
     (
         "microsoft_2023_10k.htm",
         "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm",
-    ),
-    # IBM 2023 10-K
-    (
-        "ibm_2023_10k.htm",
-        "https://www.sec.gov/Archives/edgar/data/51143/000155837024002463/ibm-20231231.htm",
     ),
     # Alphabet 2023 10-K
     (

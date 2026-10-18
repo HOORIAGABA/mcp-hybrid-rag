@@ -3,12 +3,13 @@
 from pathlib import Path
 
 from bs4 import BeautifulSoup
+from chromadb import config
 
-from src.config import DATA_RAW
+from src.config import DATA_RAW, PAGE_SIZE
 
 
 def parse_html(html_path: Path) -> list[dict]:
-    """Extract text from an HTML filing, chunked by top-level headings."""
+    """Extract text from an HTML filing and split into logical pages."""
     raw = html_path.read_text(encoding="utf-8", errors="ignore")
     soup = BeautifulSoup(raw, "lxml")
 
@@ -16,7 +17,7 @@ def parse_html(html_path: Path) -> list[dict]:
     for tag in soup(["script", "style", "noscript"]):
         tag.decompose()
 
-    # SEC filings wrap content in <div> blocks. We split on top-level text.
+    # Flatten the tree to plain text; block-level tags become line breaks.
     text = soup.get_text(separator="\n", strip=True)
 
     # Collapse excessive blank lines
@@ -26,7 +27,7 @@ def parse_html(html_path: Path) -> list[dict]:
     # Split into "pages" of ~4000 chars so page metadata stays meaningful
     # (SEC HTML has no real pagination, so we synthesize logical pages)
     pages = []
-    page_size = 4000
+    page_size = PAGE_SIZE
     for i in range(0, len(cleaned), page_size):
         pages.append(
             {

@@ -22,9 +22,12 @@ CHROMA_DIR = Path(os.getenv("CHROMA_DIR", ROOT / "index/chroma"))
 BM25_DIR = Path(os.getenv("BM25_DIR", ROOT / "index/bm25"))
 
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
-RERANKER_MODEL = os.getenv("RERANKER_MODEL", "BAAI/bge-reranker-base")
+RERANKER_MODEL = os.getenv("RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
+SEC_USER_AGENT = os.getenv("SEC_USER_AGENT", "hybrid-rag-mcp contact@example.com")
+
+PAGE_SIZE = 4000
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 150
 TOP_K_RETRIEVE = 20  # per retriever before fusion
